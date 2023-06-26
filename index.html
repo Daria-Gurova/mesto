@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesto</title>
+    <link rel="stylesheet" href="./pages/index.css">
+</head>
+<body class="root">
+    <header class="header">
+        <img class="header__logo" src="./images/logo.svg" alt="логотип место">
+        <hr class="header__line">
+    </header>
+    <section class="profile">
+        <img class="profile__avatar" src="./images/image.png" alt="аватар">
+        <div class="profile__info">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button class="profile__edit-button" type="button" aria-label="Редактировать">
+                <img class="profile__edit-button-img" src="./images/edit_button.svg" alt="редактировать"/>
+            </button>
+            <p class="profile__subtitle">Исследователь океана</p>
+        </div>
+        <button class="profile__add-button" type="button" aria-label="Добавить картинку">
+            <img class="profile__add-buttton-img" src="./images/plus.png" alt="добавить">
+        </button>
+    </section>
+    <section class="elements">
+        <div class="element">
+            <img class="element__img" src="./images/volgograd.png" alt="волгоград">
+            <div class="element__content">
+                <p class="element__title">Волгоград</p>
+                <button class="element__like" type="button" aria-label="лайк">
+                    <img class="element__like-img" src="./images/like.svg" alt="лайк">
+                </button>
+            </div>    
+        </div>
+        <div class="element">
+            <img class="element__img" src="./images/moskva.png" alt="москва">
+            <div class="element__content">
+                <p class="element__title">Москва</p>
+                <button class="element__like" type="button" aria-label="лайк">
+                    <img class="element__like-img" src="./images/like.svg" alt="лайк">
+                </button>
+            </div>    
+        </div>
+        <div class="element">
+            <img class="element__img" src="./images/piter.png" alt="питер">
+            <div class="element__content">
+                <p class="element__title">Санкт-Петербург</p>
+                <button class="element__like" type="button" aria-label="лайк">
+                    <img class="element__like-img" src="./images/like.svg" alt="лайк">
+                </button>
+            </div>    
+        </div>
+        <div class="element">
+            <img class="element__img" src="./images/izhevsk.png" alt="ижевск">
+            <div class="element__content">
+                <p class="element__title">Ижевск</p>
+                <button class="element__like" type="button" aria-label="лайк">
+                    <img class="element__like-img" src="./images/like.svg" alt="лайк">
+                </button>
+            </div>    
+        </div>
+        <div class="element">
+            <img class="element__img" src="./images/kazan.png" alt="казань">
+            <div class="element__content">
+                <p class="element__title">Казань</p>
+                <button class="element__like" type="button" aria-label="лайк">
+                    <img class="element__like-img" src="./images/like.svg" alt="лайк">
+                </button>
+            </div>    
+        </div>
+        <div class="element">
+            <img class="element__img" src="./images/vladivostok.PNG" alt="владивосток">
+            <div class="element__content">
+                <p class="element__title">Владивосток</p>
+                <button class="element__like" type="button" aria-label="лайк">
+                    <img class="element__like-img" src="./images/like.svg" alt="лайк">
+                </button>
+            </div>    
+        </div>
+    </section>
+    <section class="footer">
+        <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
+    </section>
+    <div class="popup">
+        <div class="popup__window">
+            <h1 class="popup__title">Редактировать профиль</h1>
+            <form class="popup__form" name="form">
+                <input class="popup__input popup__name" type="text" name="name">
+                <input class="popup__input popup__job" type="text" name="job">
+            </form>
+            <button class="popup-button popup__button-save" type="button" aria-label="сохранить">Сохранить</button>
+            <button class="popup-button popup__button-close" type="button" aria-label="закрыть">
+                <img class="popup__button-close-img" src="./images/close.png" alt="закрыть">
+            </button>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
