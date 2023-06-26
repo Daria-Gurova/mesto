@@ -1,0 +1,16 @@
+.elements {
+    margin: 47px 0 67px;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
+    gap: 20px 17px;
+}
+
+@media screen and (max-width: 576px) {
+    .elements {
+        margin: 36px 0 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }    
+}

@@ -1,0 +1,28 @@
+.root {
+    max-width: 880px;
+    margin: 0 auto;
+    font-family: 'Inter', Arial, sans-serif;
+    background: #000000;
+    color: #FFFFFF;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+}
+
+@media screen and (max-width: 1024px) {
+    .root {
+        max-width: 72%;
+    }
+}  
+@media screen and (max-width: 576px) {
+    .root {
+        max-width: 80%;
+    }
+}    
+
+@media screen and (max-width: 320px) {
+    .root {
+        max-width: 88%;
+    }    
+}
