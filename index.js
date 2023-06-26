@@ -8,7 +8,7 @@ const editButton = document.querySelector(".profile__edit-button");
 const closeButton = document.querySelector(".popup__button-close");
 
 // кнопка Сохранить (и отправить?)
-const submitPopup = document.querySelector(".popup__button-save")
+const submitPopup = document.querySelector(".popup__form")
 
 const formElement = document.querySelector(".popup__form");
 // Находим поля формы в DOM
@@ -34,7 +34,6 @@ function setNodeTextValue() {
 function openPopup() {
     popup.classList.add('popup__opened');
     setNodeTextValue();
-    console.log(formElement);
 };
 
 // функция, которая удаляет модификатор popup__opened, чтобы закрыть форму
@@ -53,4 +52,4 @@ editButton.addEventListener('click', openPopup);
 
 closeButton.addEventListener('click', closePopup);
 
-submitPopup.addEventListener('click', handleFormSubmit);
+form.addEventListener('submit', handleFormSubmit);
