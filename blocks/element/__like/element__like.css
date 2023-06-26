@@ -3,5 +3,10 @@
     align-self: self-end;
     margin-left: 30px;
     border-width: 0;
-    background-color: white;    
+    background-color: white;
+}
+
+.element__like:hover {
+    cursor: pointer;
+    opacity: 0.5;    
 }

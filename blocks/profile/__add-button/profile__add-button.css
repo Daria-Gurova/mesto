@@ -12,8 +12,16 @@
     background-color: black;
 }
 
+.profile__add-button:hover {
+    cursor: pointer;
+    opacity: 0.5;    
+}
+
 @media screen and (max-width: 320px) {
     .profile__add-button {
-        width: 100%;
+        max-width: 282px;
+        max-height: 50px;
+        min-width: 282px;
+        min-height: 50px;
     }    
 }

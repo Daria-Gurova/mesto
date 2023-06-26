@@ -9,11 +9,12 @@
     font-style: normal;
     color: black;
     position: relative;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 }
 
 @media screen and (max-width: 576px) {
     .popup__container {
-        max-width: 282px;
+        width: 282px;
         padding: 25px 22px;
     }    
 }

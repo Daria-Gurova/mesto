@@ -32,13 +32,13 @@ function setNodeTextValue() {
 
 // функция, которая добавляет модификатор popup__opened, чтобы открыть форму
 function openPopup() {
-    popup.classList.add('popup__opened');
+    popup.classList.add('popup_opened');
     setNodeTextValue();
 };
 
 // функция, которая удаляет модификатор popup__opened, чтобы закрыть форму
 function closePopup() {
-    popup.classList.remove('popup__opened');
+    popup.classList.remove('popup_opened');
 };
 
 // функция, которая переносит занчения инпутов в profile, то есть сохраняет изменения, написанные в инпутах, и закрывает форму
