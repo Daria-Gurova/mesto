@@ -1,6 +1,6 @@
-.root {
-    /*max-width: 880px;
-    margin: 0 auto;*/
+.content {
+    max-width: 880px;
+    margin: 0 auto;
     font-family: 'Inter', Arial, sans-serif;
     background: #000000;
     color: #FFFFFF;
@@ -10,19 +10,19 @@
     text-rendering: optimizeLegibility;
 }
 
-/*@media screen and (max-width: 1024px) {
-    .root {
+@media screen and (max-width: 1024px) {
+    .content {
         max-width: 72%;
     }
 }  
 @media screen and (max-width: 576px) {
-    .root {
+    .content {
         max-width: 80%;
     }
 }    
 
 @media screen and (max-width: 320px) {
-    .root {
+    .content {
         max-width: 88%;
     }    
-}*/
+}
