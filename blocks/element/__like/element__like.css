@@ -8,11 +8,11 @@
     background-position: center;
     background-size: 22px 19px;
     background-repeat: no-repeat;
-    background-color: transparent;;
+    background-color: transparent;
     transition: opacity .25s ease;
 }
 
 .element__like:hover {
     cursor: pointer;
-    opacity: 0.5;    
+    opacity: 0.5; 
 }
