@@ -25,78 +25,58 @@
             </button>
         </section>
         <section class="elements">
-            <div class="element">
-                <img class="element__img" src="./images/volgograd.png" alt="волгоград">
-                <div class="element__content">
-                    <h2 class="element__title">Волгоград</h2>
-                    <button class="element__like" type="button" aria-label="лайк">
-                        <img class="element__like-img" src="./images/like.svg" alt="лайк">
-                    </button>
-                </div>    
-            </div>
-            <div class="element">
-                <img class="element__img" src="./images/moskva.png" alt="москва">
-                <div class="element__content">
-                    <h2 class="element__title">Москва</h2>
-                    <button class="element__like" type="button" aria-label="лайк">
-                        <img class="element__like-img" src="./images/like.svg" alt="лайк">
-                    </button>
-                </div>    
-            </div>
-            <div class="element">
-                <img class="element__img" src="./images/piter.png" alt="питер">
-                <div class="element__content">
-                    <h2 class="element__title">Санкт-Петербург</h2>
-                    <button class="element__like" type="button" aria-label="лайк">
-                        <img class="element__like-img" src="./images/like.svg" alt="лайк">
-                    </button>
-                </div>    
-            </div>
-            <div class="element">
-                <img class="element__img" src="./images/izhevsk.png" alt="ижевск">
-                <div class="element__content">
-                    <h2 class="element__title">Ижевск</h2>
-                    <button class="element__like" type="button" aria-label="лайк">
-                        <img class="element__like-img" src="./images/like.svg" alt="лайк">
-                    </button>
-                </div>    
-            </div>
-            <div class="element">
-                <img class="element__img" src="./images/kazan.png" alt="казань">
-                <div class="element__content">
-                    <h2 class="element__title">Казань</h2>
-                    <button class="element__like" type="button" aria-label="лайк">
-                        <img class="element__like-img" src="./images/like.svg" alt="лайк">
-                    </button>
-                </div>    
-            </div>
-            <div class="element">
-                <img class="element__img" src="./images/vladivostok.PNG" alt="владивосток">
-                <div class="element__content">
-                    <h2 class="element__title">Владивосток</h2>
-                    <button class="element__like" type="button" aria-label="лайк">
-                        <img class="element__like-img" src="./images/like.svg" alt="лайк">
-                    </button>
-                </div>    
-            </div>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
     </footer>
-    <div class="popup">
+    <div class="popup" id="popup-edit">
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form class="popup__form" name="form">
-                <input class="popup__input popup__input_type_name popup__name" type="text" name="name">
-                <input class="popup__input popup__input_type_job popup__job" type="text" name="job">
-                <button class="popup__button-save" type="submit" aria-label="сохранить">Сохранить</button>
+            <form class="popup__form" id="form-edit" name="form">
+                <input class="popup__input popup__name" type="text" name="name">
+                <input class="popup__input popup__job" type="text" name="job">
+                <button class="popup__button-save" id="save-edit" type="submit" aria-label="сохранить">Сохранить</button>
             </form>
-            <button class="popup__button-close" type="button" aria-label="закрыть">
+            <button class="popup__button-close" id="popup-edit-close" type="button" aria-label="закрыть">
                 <img class="popup__button-close-img" src="./images/close.png" alt="закрыть">
             </button>
         </div>
     </div>
+    <div class="popup" id="popup-add">
+        <div class="popup__container">
+            <h2 class="popup__title">Новое место</h2>
+            <form class="popup__form" id="form-add" name="form-add">
+                <input class="popup__input popup__place-name" type="text" name="place-name" id="place-name" placeholder="Название"> 
+                <input class="popup__input popup__link" type="text" name="link" id="link" placeholder="Ссылка на картинку">
+                <button class="popup__button-save" id="save-add" type="submit" aria-label="сохранить">Создать</button>
+            </form>
+            <button class="popup__button-close" id="popup-add-close" type="button" aria-label="закрыть">
+                <img class="popup__button-close-img" src="./images/close.png" alt="закрыть">
+            </button>
+        </div>
+    </div>
+    <div class="popup popup_overlay-full-image" id="popup-open-overlay-full-image">
+        <div class="popup__overlay-full-image-container">
+            <img class="popup__full-image" src="#" alt="">
+            <h2 class="popup__full-image-title"></h2>
+            <button class="popup__button-close" id="popup-overlay-close" type="button" aria-label="Закрыть">
+                <img class="popup__button-close-img" src="./images/close.png" alt="закрыть">
+            </button>
+        </div>
+    </div>
+    <template id="element-cards">
+        <div class="element">
+            <img class="element__img" src="" alt="">
+            <div class="element__content">
+                <h2 class="element__title"></h2>
+                <button class="element__like" type="button" aria-label="лайк">
+                </button>
+                <button class="element__delete" type="button" aria-label="удалить">
+                </button>
+            </div>
+        </div>
+    </template>
     <script src="./index.js"></script>
 </body>
 </html>

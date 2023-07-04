@@ -1,0 +1,15 @@
+.popup__overlay-full-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    max-width: 75vw;
+    max-height: 75vw;
+    margin: auto;
+    padding: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 25px rgb(0 0 0 / 15%);
+    border-radius: 10px;
+}
