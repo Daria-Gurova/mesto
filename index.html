@@ -34,8 +34,8 @@
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form" id="form-edit" name="form">
-                <input class="popup__input popup__name" type="text" name="name">
-                <input class="popup__input popup__job" type="text" name="job">
+                <input class="popup__input popup__name" type="text" name="name" required>
+                <input class="popup__input popup__job" type="text" name="job" required>
                 <button class="popup__button-save" id="save-edit" type="submit" aria-label="сохранить">Сохранить</button>
             </form>
             <button class="popup__button-close" id="popup-edit-close" type="button" aria-label="закрыть">
@@ -47,8 +47,8 @@
         <div class="popup__container">
             <h2 class="popup__title">Новое место</h2>
             <form class="popup__form" id="form-add" name="form-add">
-                <input class="popup__input popup__place-name" type="text" name="place-name" id="place-name" placeholder="Название"> 
-                <input class="popup__input popup__link" type="text" name="link" id="link" placeholder="Ссылка на картинку">
+                <input class="popup__input popup__place-name" type="text" name="place-name" id="place-name" placeholder="Название" required> 
+                <input class="popup__input popup__link" type="text" name="link" id="link" placeholder="Ссылка на картинку" required>
                 <button class="popup__button-save" id="save-add" type="submit" aria-label="сохранить">Создать</button>
             </form>
             <button class="popup__button-close" id="popup-add-close" type="button" aria-label="закрыть">
