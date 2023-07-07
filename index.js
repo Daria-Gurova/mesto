@@ -54,8 +54,6 @@ const popupAdd = document.querySelector('#popup-add');
 const buttonClosePopupAdd = document.querySelector('#popup-add-close');
 const popupAddClose = document.querySelector('#popup-add');
 
-const formElement = document.querySelector(".popup__form");
-
 // Лайки и открытие фото на весь экран 
 
 const elements = document.querySelector('.elements');
@@ -178,7 +176,7 @@ buttonAdd.addEventListener('click', function() {
 });
 
 // закрываем форму Добавить
-buttonClosePopupAdd.addEventListener('click', function() {
+buttonClosePopupAdd.addEventListener('click', function(event) {
     closePopup(popupAddClose);
 });
 
@@ -189,3 +187,21 @@ initialCards.forEach(function(item) {
 
 // Сохраняем и закрываем форму Добавить
 formNewCard.addEventListener('submit', handleAddSubmit);
+
+// Закрытие попап по нажатию Esc
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        const popupOpened = document.querySelector('.popup_opened');
+        closePopup(popupOpened);
+      }
+});
+
+// Закрытие попап по клику на overlay
+
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('popup') === true) {
+        const popupOpened = document.querySelector('.popup_opened');
+        closePopup(popupOpened);
+      }
+});
