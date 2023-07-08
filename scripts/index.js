@@ -69,6 +69,7 @@ const closeFullImage = popupFullImage.querySelector('#popup-overlay-close');
 const formNewCard = popupAdd.querySelector('#form-add'); // форма Добавить
 const linkInput = popupAdd.querySelector('#link'); // ссылка на фото
 const placeNameInput = popupAdd.querySelector('#place-name'); // название
+const buttonSubmitPopupAdd = popupAdd.querySelector('#save-add'); // кнопка Сохранить в форме Добавить
 
 
 // функция, которая присваивает значения профилю из инпутов
@@ -195,7 +196,9 @@ initialCards.forEach(function(item) {
 });
 
 // Сохраняем и закрываем форму Добавить
-formNewCard.addEventListener('submit', handleAddSubmit);
+//formNewCard.addEventListener('submit', handleAddSubmit);
+
+buttonSubmitPopupAdd.addEventListener('submit', disableButton(buttonElement, config));
 
 // Закрытие попап по нажатию Esc
 
