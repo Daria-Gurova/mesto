@@ -144,16 +144,6 @@ function renderCard(data, container) {
     container.prepend(createPlaceCards(data));
 }
 
-/* функция, которая заполняет форму Добавить, сохраняет и закрывает форму
-function handleAddSubmit(evt) {
-    evt.preventDefault();
-    const linkNew = linkInput.value;
-    const placeNameNew = placeNameInput.value;
-    renderCard({name:placeNameNew, link:linkNew}, elements);
-    formNewCard.reset();
-    closePopup(popupAdd);
-  };*/
-
 // функция, которая заполняет форму Добавить, сохраняет и закрывает форму
 function handleAddSubmit(evt) {
   evt.preventDefault();
@@ -187,6 +177,7 @@ buttonAdd.addEventListener('click', function() {
 
 // закрываем форму Добавить
 buttonClosePopupAdd.addEventListener('click', function(event) {
+    disableButton(buttonSubmitPopupAdd, config);
     closePopup(popupAddClose);
 });
 
@@ -196,9 +187,8 @@ initialCards.forEach(function(item) {
 });
 
 // Сохраняем и закрываем форму Добавить
-//formNewCard.addEventListener('submit', handleAddSubmit);
+formNewCard.addEventListener('submit', handleAddSubmit);
 
-buttonSubmitPopupAdd.addEventListener('submit', disableButton(buttonElement, config));
 
 // Закрытие попап по нажатию Esc
 
