@@ -71,14 +71,14 @@ const linkInput = popupAdd.querySelector('#link'); // ссылка на фото
 const placeNameInput = popupAdd.querySelector('#place-name'); // название
 
 
-// функция, которая присваивает значения инпутам (из profile)
-function setPopupInputValue() {
+// функция, которая присваивает значения профилю из инпутов
+function setProfileFieldsFromInputs() {
     nameTitle.textContent = nameInput.value 
     jobTitle.textContent = jobInput.value;
 };
 
-// функция, которая присваивает значения profile (из инупта)
-function setNodeTextValue() {
+// функция, которая устанавливает значения инпутов из профиля
+function setPopupInputsFromProfile() {
     nameInput.value = nameTitle.textContent;
     jobInput.value = jobTitle.textContent;
 };
@@ -86,7 +86,6 @@ function setNodeTextValue() {
 // функция, которая добавляет модификатор popup__opened, чтобы открыть форму
 function openPopup(popupForOpen) {
     popupForOpen.classList.add('popup_opened');
-    /*setNodeTextValue();*/
 };
 
 //функция, которая удаляет модификатор popup__opened, чтобы закрыть форму
@@ -97,7 +96,7 @@ function closePopup(popupForClose) {
 // функция, которая переносит занчения инпутов в profile, то есть сохраняет изменения, написанные в инпутах, и закрывает форму
 function handleEditFormSubmit (evt) {
     evt.preventDefault();
-    setPopupInputValue();
+    setProfileFieldsFromInputs();
     closePopup(popupEditClose);
 };
 
@@ -144,7 +143,7 @@ function renderCard(data, container) {
     container.prepend(createPlaceCards(data));
 }
 
-// функция, которая заполняет форму Добавить, сохраняет и закрывает форму
+/* функция, которая заполняет форму Добавить, сохраняет и закрывает форму
 function handleAddSubmit(evt) {
     evt.preventDefault();
     const linkNew = linkInput.value;
@@ -152,12 +151,22 @@ function handleAddSubmit(evt) {
     renderCard({name:placeNameNew, link:linkNew}, elements);
     formNewCard.reset();
     closePopup(popupAdd);
-  };
+  };*/
+
+// функция, которая заполняет форму Добавить, сохраняет и закрывает форму
+function handleAddSubmit(evt) {
+  evt.preventDefault();
+  const link = linkInput.value;
+  const name = placeNameInput.value;
+  renderCard({name, link}, elements);
+  formNewCard.reset();
+  closePopup(popupAdd);
+};
 
 // открываем форму Редактировать
 buttonEdit.addEventListener('click', function() {
     openPopup(popupEdit);
-    setNodeTextValue();
+    setPopupInputsFromProfile();
 });
 
 // закрываем форму Редактировать
@@ -200,8 +209,7 @@ document.addEventListener('keydown', function(event) {
 // Закрытие попап по клику на overlay
 
 document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('popup') === true) {
-        const popupOpened = document.querySelector('.popup_opened');
-        closePopup(popupOpened);
+    if (event.target.classList.contains('popup')) {
+        closePopup(event.target);
       }
 });

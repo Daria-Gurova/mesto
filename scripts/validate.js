@@ -25,7 +25,6 @@ function hideError(inputElement, errorElement, config) {
 function checkInputValidity(inputElement, formElement, config) {
     const isInputValid = inputElement.validity.valid;
     const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
-    console.log(errorElement);
     if(!isInputValid) {
         showError(inputElement, errorElement, config);
     }   else {
@@ -34,13 +33,13 @@ function checkInputValidity(inputElement, formElement, config) {
 }
 
 // функция, которая блокирует кнопку Сохранить, если форма не валидна
-function disabledButton(buttonElement, config) {
+function disableButton(buttonElement, config) {
     buttonElement.disabled = true;
     buttonElement.classList.add(config.inactiveButtonClass);   
 };
 
 // функция, которая разблокирует кнопку Сохранить, если форма стала валидна
-function enabledButton(buttonElement, config) {
+function enableButton(buttonElement, config) {
     buttonElement.disabled = false;
     buttonElement.classList.remove(config.inactiveButtonClass);  
 };
@@ -48,9 +47,9 @@ function enabledButton(buttonElement, config) {
 // функция, которая переключает кнопку между состояниями заблокирована/разблокирована в зависимости от того, валидна форма или нет
 function toggleButtonState (buttonElement, isActive, config) {
     if(!isActive) {
-        disabledButton(buttonElement, config);
+        disableButton(buttonElement, config);
     } else {
-        enabledButton(buttonElement, config);
+        enableButton(buttonElement, config);
     };
 };
 
@@ -70,7 +69,6 @@ function setEventListener(formElement, config) {
     // 2 Вешаем обработчик события submit на каждую форму в переборе
     formElement.addEventListener('submit', (evt) => {
         evt.preventDefault();
-        if(!formElement.checkValidity()) return;
         console.log("Форма отправлена!");
     });
 }
