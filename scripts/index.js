@@ -154,6 +154,7 @@ function handleAddSubmit(evt) {
   renderCard({name, link}, elements);
   formNewCard.reset();
   disableButton(evt.submitter, config);
+  closePopup(popupAdd);
 };
 
 // открываем форму Редактировать
