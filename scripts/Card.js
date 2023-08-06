@@ -1,4 +1,4 @@
-import { openPopup } from "./index";
+import { openPopup } from "./index.js";
 export class Card {
     _name;
     _link;

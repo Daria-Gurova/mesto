@@ -87,7 +87,7 @@ function setPopupInputsFromProfile() {
 };
 
 // функция, которая добавляет модификатор popup__opened, чтобы открыть форму
-function openPopup(popupForOpen) {
+export function openPopup(popupForOpen) {
     popupForOpen.classList.add('popup_opened');
     document.addEventListener('keydown', closePopupByEsc); 
 };
