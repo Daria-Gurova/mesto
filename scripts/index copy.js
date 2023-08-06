@@ -1,7 +1,5 @@
-import { Card } from "./Card.js";
-
 // Массив фотографий и названий
-
+import 
 const initialCards = [
     {
       name: 'Архыз',
@@ -105,7 +103,7 @@ function handleEditFormSubmit (evt) {
     closePopup(popupEditClose);
 };
 
-/* функция, с помощью которой через template ставим/удаляем лайки и открываем/закрываем фото на весь экран
+// функция, с помощью которой через template ставим/удаляем лайки и открываем/закрываем фото на весь экран
 function createPlaceCards({name, link}) {
     const placeCard = templateElement.cloneNode(true);  
     const elementImage = placeCard.querySelector('.element__img');
@@ -142,26 +140,10 @@ function createPlaceCards({name, link}) {
     });
 
     return placeCard;
-} 
+}
 
 function renderCard(data, container) {
     container.prepend(createPlaceCards(data));
-} */
-
-function renderCard(data, container) {
-  const placeCard = new Card(data.name, data.link, '#element-cards').createCard();
-  container.prepend(placeCard);
-
-  switch (position) {
-    case 'append':
-      container.append(placeCard);
-      break;
-    case 'prepend':
-      container.prepend(placeCard);
-      break;
-    default:
-      break;
-  }
 }
 
 // функция, которая заполняет форму Добавить, сохраняет и закрывает форму
@@ -189,6 +171,7 @@ buttonClosePopupEdit.addEventListener('click', function() {
 // Сохраняем и закрываем форму Редактировать
 
 form.addEventListener('submit', handleEditFormSubmit);
+
 
 // открываем форму Добавить
 buttonAdd.addEventListener('click', function() {
@@ -223,6 +206,7 @@ const closePopupByEsc = event => {
       closePopup(popupOpened); 
  };
 };
+
 
 // Закрытие попап по клику на overlay
 
