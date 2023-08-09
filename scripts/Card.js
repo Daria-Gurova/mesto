@@ -5,10 +5,12 @@ export class Card {
     _templateSelector;
     _placeCard;
 
-    constructor(name, link, templateSelector) {
+    constructor(name, link, templateSelector /*elementLike, elementDelete*/) {
         this._name = name;
         this._link = link;
         this._templateSelector = templateSelector;
+        //this._elementLike = elementLike;
+        //this._elementDelete = elementDelete;
     }
 
     _getTemplate() {
@@ -20,30 +22,29 @@ export class Card {
 
     createCard() {
         this._placeCard = this._getTemplate();
-        elementContent = this._placeCard.querySelector('.element__title');
-        elementImage = this._placeCard.querySelector('.element__img');
+        const elementContent = this._placeCard.querySelector('.element__title');
+        const elementImage = this._placeCard.querySelector('.element__img');
+        
 
         elementContent.textContent = this._name;
         elementImage.src = this._link;
-        elementLike.alt = this._name;
+        elementImage.alt = this._name;
         this._setEventListeners();
         return this._placeCard;
     }
 
-    _toggleLike() {
-        elementLike = this._placeCard.querySelector('.element__like'); 
+    _toggleLike() { 
         elementLike.classList.toggle('.element__like_active');
     }
 
     _deleteLike() {
-        elementDelete = this._placeCard.querySelector('.element__delete');
         this._placeCard.remove();
     }
 
     _openImage() {
-        popupFullImage = document.querySelector('#popup-open-overlay-full-image');
-        fullImage = popupFullImage.querySelector('.popup__full-image');
-        titleFullImage = popupFullImage.querySelector('.popup__full-image-title');
+        const popupFullImage = document.querySelector('#popup-open-overlay-full-image');
+        const fullImage = popupFullImage.querySelector('.popup__full-image');
+        const titleFullImage = popupFullImage.querySelector('.popup__full-image-title');
 
         openPopup(popupFullImage);
         fullImage.src = this._link;
@@ -52,29 +53,29 @@ export class Card {
     }
 
     _closeImage() {
-        popupFullImage = document.querySelector('#popup-open-overlay-full-image');
-        closeFullImage = popupFullImage.querySelector('#popup-overlay-close');
+        const popupFullImage = document.querySelector('#popup-open-overlay-full-image');
+        const closeFullImage = popupFullImage.querySelector('#popup-overlay-close');
         closeFullImage.remove('popup_opened');
     }
 
     _setEventListeners() {
-        elementLike = this._placeCard.querySelector('.element__like');
+        const elementLike = this._placeCard.querySelector('.element__like');
         elementLike.addEventListener('click', function() {
             this._toggleLike();
         });
 
-        elementDelete = this._placeCard.querySelector('.element__delete');
+        const elementDelete = this._placeCard.querySelector('.element__delete');
         elementDelete.addEventListener('click', function() {
             this._deleteLike();
         });
 
-        elementImage = this._placeCard.querySelector('.element__img');
+        const elementImage = this._placeCard.querySelector('.element__img');
         elementImage.addEventListener('click', function () {
             this._openImage();
         });
 
-        popupFullImage = document.querySelector('#popup-open-overlay-full-image');
-        closeFullImage = popupFullImage.querySelector('#popup-overlay-close');
+        const popupFullImage = document.querySelector('#popup-open-overlay-full-image');
+        const closeFullImage = popupFullImage.querySelector('#popup-overlay-close');
         closeFullImage.addEventListener('click', function() {
             this._closeImage();
         });

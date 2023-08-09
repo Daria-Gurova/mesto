@@ -149,19 +149,8 @@ function renderCard(data, container) {
 } */
 
 function renderCard(data, container) {
-  const placeCard = new Card(data.name, data.link, '#element-cards').createCard();
-  container.prepend(placeCard);
-
-  switch (position) {
-    case 'append':
-      container.append(placeCard);
-      break;
-    case 'prepend':
-      container.prepend(placeCard);
-      break;
-    default:
-      break;
-  }
+  const card = new Card(data.name, data.link, '#element-cards').createCard();
+  container.prepend();
 }
 
 // функция, которая заполняет форму Добавить, сохраняет и закрывает форму
@@ -203,7 +192,7 @@ buttonClosePopupAdd.addEventListener('click', function(event) {
 
 // Добавляем данные из массива в template
 initialCards.forEach(function(item) {
-    renderCard(item, elements);
+  renderCard(item, elements);
 });
 
 // Сохраняем и закрываем форму Добавить
