@@ -5,11 +5,15 @@ import { config, initialCards } from "./constants.js";
 
 // берем весь popup
 const popup = document.querySelector(".popup");
-const popupForm = popup.querySelector(".popup__form");
+
+// формы Редактировать и Добавить
+const formEdit = document.querySelector('#form-edit');
+const formAdd = document.querySelector('#form-add');
 
 // кнопка Редактировать
 const buttonEdit = document.querySelector(".profile__edit-button"); // кнопка
 const popupEdit = document.querySelector('#popup-edit'); // попап 
+
 
 // кнопка Закрыть форму Редактировать (крестик в правом верхнем углу)
 const buttonClosePopupEdit = document.querySelector("#popup-edit-close"); // кнопка
@@ -80,49 +84,6 @@ function handleEditFormSubmit (evt) {
     closePopup(popupEditClose);
 };
 
-/* функция, с помощью которой через template ставим/удаляем лайки и открываем/закрываем фото на весь экран
-function createPlaceCards({name, link}) {
-    const placeCard = templateElement.cloneNode(true);  
-    const elementImage = placeCard.querySelector('.element__img');
-    const elementContent = placeCard.querySelector('.element__title');
-    const elementLike = placeCard.querySelector('.element__like');
-    const elementDelete = placeCard.querySelector('.element__delete');
-   
-    elementImage.src = link;
-    elementLike.alt = name;
-
-    elementContent.textContent = name;
-    
-    // Поставить лайк
-    elementLike.addEventListener('click', function() {
-        elementLike.classList.toggle('element__like_active');
-    });
-    
-    // Удалить лайк
-    elementDelete.addEventListener('click', function() {
-      placeCard.remove();
-    });
-  
-    // Открыть фото на весь экран
-    elementImage.addEventListener('click', function () {
-      openPopup(popupFullImage);
-      fullImage.src = link;
-      fullImage.alt = name;
-      titleFullImage.textContent = name;
-    });
-
-    // Закрыть фото
-    closeFullImage.addEventListener('click', function() {
-        closePopup(popupFullImage);
-    });
-
-    return placeCard;
-} 
-
-function renderCard(data, container) {
-    container.prepend(createPlaceCards(data));
-} */
-
 function renderCard(data, elements) {
   const card = new Card(data.name, data.link, '#element-cards', handleCardClick).createCard();
   elements.prepend(card);
@@ -145,6 +106,7 @@ function handleAddSubmit(evt) {
   renderCard({name, link}, elements);
   formNewCard.reset();
   //disableButton(evt.submitter, config);
+  formAddValidation.disableButton();
   closePopup(popupAdd);
 };
 
@@ -170,7 +132,7 @@ buttonAdd.addEventListener('click', function() {
 
 // закрываем форму Добавить
 buttonClosePopupAdd.addEventListener('click', function(event) {
-    //disableButton(buttonSubmitPopupAdd, config);
+    disableButton(buttonSubmitPopupAdd, config);
     closePopup(popupAddClose);
 });
 
@@ -190,12 +152,6 @@ closeFullImage.addEventListener('click', function() {
 
 // Закрытие попап по нажатию Esc
 
-document.addEventListener('click', function(event) { 
-  if (event.target.classList.contains('popup')) { 
-      closePopup(event.target); 
-    } 
-});
-
 const closePopupByEsc = event => {
   if (event.key === 'Escape') { 
       const popupOpened = document.querySelector('.popup_opened'); 
@@ -211,5 +167,8 @@ document.addEventListener('click', function(event) {
     }
 });
 
-const formValidation = new FormValidator(config, popupForm);
-formValidation.enableValidation();
+const formEditValidation = new FormValidator(config, formEdit);
+const formAddValidation = new FormValidator(config, formAdd);
+
+formEditValidation.enableValidation();
+formAddValidation.enableValidation();

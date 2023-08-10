@@ -36,12 +36,6 @@ export class Card {
         this._placeCard.remove();
     }
 
-    _closeImage() {
-        const popupFullImage = document.querySelector('#popup-open-overlay-full-image');
-        const closeFullImage = popupFullImage.querySelector('#popup-overlay-close');
-        closeFullImage.remove('popup_opened');
-    }
-
     _setEventListeners() {
         this._elementLike.addEventListener('click', () => {
             this._toggleLike();
