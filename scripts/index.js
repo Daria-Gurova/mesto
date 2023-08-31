@@ -1,6 +1,10 @@
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import { config, initialCards } from "./constants.js";
+import { Section } from "./Section.js";
+import { PopupWithImage } from "./PopupWithImage.js";
+import { PopupWithForm } from "./PopupWithForm.js";
+import { UserInfo } from "./UserInfo.js";
 // Массив фотографий и названий
 
 // берем весь popup
@@ -66,27 +70,27 @@ function setPopupInputsFromProfile() {
 };
 
 // функция, которая добавляет модификатор popup__opened, чтобы открыть форму
-function openPopup(popupForOpen) {
-    popupForOpen.classList.add('popup_opened');
-    document.addEventListener('keydown', closePopupByEsc); 
-};
+// function openPopup(popupForOpen) {
+//     popupForOpen.classList.add('popup_opened');
+//     document.addEventListener('keydown', closePopupByEsc); 
+// };
 
 //функция, которая удаляет модификатор popup__opened, чтобы закрыть форму
-function closePopup(popupForClose) {
-    popupForClose.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closePopupByEsc);
-};
+// function closePopup(popupForClose) {
+//     popupForClose.classList.remove('popup_opened');
+//     document.removeEventListener('keydown', closePopupByEsc);
+// };
 
 // функция, которая переносит занчения инпутов в profile, то есть сохраняет изменения, написанные в инпутах, и закрывает форму
-function handleEditFormSubmit (evt) {
-    evt.preventDefault();
-    setProfileFieldsFromInputs();
-    closePopup(popupEditClose);
-};
+// function handleEditFormSubmit (evt) {
+//     evt.preventDefault();
+//     setProfileFieldsFromInputs();
+//     closePopup(popupEditClose);
+// };
 
 function renderCard(data, elements) {
   const card = new Card(data.name, data.link, '#element-cards', handleCardClick).createCard();
-  elements.prepend(card);
+  return card;
 }
 
 
@@ -98,77 +102,129 @@ function handleCardClick(data) {
 };
 
 
-// функция, которая заполняет форму Добавить, сохраняет и закрывает форму
-function handleAddSubmit(evt) {
-  evt.preventDefault();
-  const link = linkInput.value;
-  const name = placeNameInput.value;
-  renderCard({name, link}, elements);
-  formNewCard.reset();
-  //disableButton(evt.submitter, config);
-  formAddValidation.disableButton();
-  closePopup(popupAdd);
-};
+// // функция, которая заполняет форму Добавить, сохраняет и закрывает форму
+// function handleAddSubmit(evt) {
+//   evt.preventDefault();
+//   const link = linkInput.value;
+//   const name = placeNameInput.value;
+//   renderCard({name, link}, elements);
+//   formNewCard.reset();
+//   //disableButton(evt.submitter, config);
+//   formAddValidation.disableButton();
+//   closePopup(popupAdd);
+// };
 
-// открываем форму Редактировать
-buttonEdit.addEventListener('click', function() {
-    openPopup(popupEdit);
-    setPopupInputsFromProfile();
-});
 
 // закрываем форму Редактировать
-buttonClosePopupEdit.addEventListener('click', function() {
-    closePopup(popupEditClose);
-});
+// buttonClosePopupEdit.addEventListener('click', function() {
+//     closePopup(popupEditClose);
+// });
 
 // Сохраняем и закрываем форму Редактировать
 
-form.addEventListener('submit', handleEditFormSubmit);
+// form.addEventListener('submit', handleEditFormSubmit);
 
-// открываем форму Добавить
-buttonAdd.addEventListener('click', function() {
-    openPopup(popupAdd);
-});
+// // закрываем форму Добавить
+// buttonClosePopupAdd.addEventListener('click', function(event) {
+//     closePopup(popupAddClose);
+// });
 
-// закрываем форму Добавить
-buttonClosePopupAdd.addEventListener('click', function(event) {
-    disableButton(buttonSubmitPopupAdd, config);
-    closePopup(popupAddClose);
-});
+// // Добавляем данные из массива в template
+// initialCards.forEach(function(data) {
+//   renderCard(data, elements);
+// });
 
-// Добавляем данные из массива в template
-initialCards.forEach(function(data) {
-  renderCard(data, elements);
-});
-
-// Сохраняем и закрываем форму Добавить
-formNewCard.addEventListener('submit', handleAddSubmit);
+// // Сохраняем и закрываем форму Добавить
+// formNewCard.addEventListener('submit', handleAddSubmit);
 
 // Закрытие картинки на весь экран при нажатии на крестик
 
-closeFullImage.addEventListener('click', function() {
-  closePopup(popupFullImage);
-});
+// closeFullImage.addEventListener('click', function() {
+//   closePopup(popupFullImage);
+// });
 
 // Закрытие попап по нажатию Esc
 
-const closePopupByEsc = event => {
-  if (event.key === 'Escape') { 
-      const popupOpened = document.querySelector('.popup_opened'); 
-      closePopup(popupOpened); 
- };
-};
+// const closePopupByEsc = event => {
+//   if (event.key === 'Escape') { 
+//       const popupOpened = document.querySelector('.popup_opened'); 
+//       closePopup(popupOpened); 
+//  };
+// };
 
 // Закрытие попап по клику на overlay
 
-document.addEventListener('click', function(event) {
-  if (event.target.classList.contains('popup')) {
-      closePopup(event.target);
-    }
-});
+// document.addEventListener('click', function(event) {
+//   if (event.target.classList.contains('popup')) {
+//       closePopup(event.target);
+//     }
+// });
 
 const formEditValidation = new FormValidator(config, formEdit);
 const formAddValidation = new FormValidator(config, formAdd);
 
 formEditValidation.enableValidation();
 formAddValidation.enableValidation();
+
+const cardSection = new Section({
+  renderer: (item) => { 
+    const newCard = renderCard(item); 
+    console.log(newCard);
+    cardSection.addItem(newCard); 
+  }, }, '.elements' ); 
+
+cardSection.render(initialCards);
+
+const popupWithFormEdit = new PopupWithForm('#popup-edit', {
+  selectorForm: '.popup__form',
+  submitHandler: (data) => {
+      console.log(data);
+  }
+});
+
+const popupWithFormAdd = new PopupWithForm('#popup-add', {
+  selectorForm: '.popup__form',
+  submitHandler: (data) => {
+    const newCard = renderCard(data); 
+    cardSection.addItem(newCard); 
+    // cardSection.render(data);
+    // popupWithFormAdd.close();
+  }
+});
+
+const popupEditProfile = new PopupWithForm('#popup-edit', {
+  selectorForm: '.popup__form',
+  submitHandler: (data) => {
+      console.log(data);
+  }
+});
+
+const userInfo = new UserInfo( {
+  userNameElement: nameTitle,
+  userJobElement: jobTitle
+});
+
+const popupWithImage = new PopupWithImage('.popup__full-image');
+popupWithImage.setEventListeners();
+
+function openEditForm() {
+  console.log(popupWithFormEdit);
+  popupWithFormEdit.open();
+  // formEditValidation.errorCleaner();
+};
+
+function openAddForm() {
+  console.log(popupWithFormAdd);
+  popupWithFormAdd.open();
+  formAddValidation.disableButton();
+  // formAddValidation.errorCleaner();
+};
+
+// открываем форму Редактировать
+buttonEdit.addEventListener('click', openEditForm);
+
+// открываем форму Добавить
+buttonAdd.addEventListener('click', openAddForm);
+
+popupWithFormAdd.setEventListeners();
+popupWithFormEdit.setEventListeners();
