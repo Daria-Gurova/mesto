@@ -37,3 +37,22 @@ export const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+
+// формы Редактировать и Добавить
+export const formEdit = document.querySelector('#form-edit');
+export const formAdd = document.querySelector('#form-add');
+
+// кнопка Редактировать
+export const buttonEdit = document.querySelector(".profile__edit-button"); // кнопка
+
+
+// Находим поля формы в DOM для формы Редактировать
+export const nameInput = document.querySelector(".popup__name");
+export const jobInput = document.querySelector(".popup__job");
+
+export const nameTitle = document.querySelector('.profile__title');
+export const jobTitle = document.querySelector('.profile__subtitle');
+
+// кнопка Добавить
+
+export const buttonAdd = document.querySelector('.profile__add-button');

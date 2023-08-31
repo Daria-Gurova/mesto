@@ -1,17 +1,16 @@
 export class UserInfo {
-    constructor({ userNameElement, userInfoElement }) {
+    constructor({ userNameElement, userJobElement }) {
         this._name = null;
         this._job = null;
         this._nameElement = userNameElement;
-        this._jobElement = userInfoElement;
+        this._jobElement = userJobElement;
     }
 
-    getUesrInfo() {
-        const userInfo = {
+    getUserInfo() {
+        return {
             name: this._name,
             job: this._job
-        }
-        return userInfo;
+        };
     }
 
     setUserInfo(userInfo) {
@@ -20,7 +19,7 @@ export class UserInfo {
     }
 
     updateUserInfo() {
-        this._nameElement.textcontent = this._name;
-        this._jobElement.textcontent = this._job
+        this._nameElement.textContent = this._name;
+        this._jobElement.textContent = this._job;
     }
 }
