@@ -39,7 +39,7 @@ const userInfo = new UserInfo( {
 });
 
 // заполнение профиля по умолчанию
-userInfo.setUserInfo({name: 'Жак-Ив Кусто', job: 'Исследователь океана'});
+userInfo.setUserInfo({title: 'Жак-Ив Кусто', job: 'Исследователь океана'});
 userInfo.updateUserInfo();
 
 // попап для добавления новой карточки
@@ -58,6 +58,7 @@ const popupWithFormEdit = new PopupWithForm('#popup-edit', {
   submitHandler: (data) => {
     userInfo.setUserInfo(data);
     userInfo.updateUserInfo();
+    // popupWithFormEdit.close();
   }
 });
 
@@ -82,8 +83,10 @@ function openAddForm() {
 
 // функция, которая устанавливает значения инпутов из профиля
 function setPopupInputsFromProfile() {
-  nameInput.value = nameTitle.textContent;
-  jobInput.value = jobTitle.textContent;
+  const infoObject = userInfo.getUserInfo();
+  console.log(infoObject);
+  nameInput.value = infoObject.title;
+  jobInput.value = infoObject.job;
 };
 
 // функция создания карточки

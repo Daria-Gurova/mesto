@@ -1,6 +1,6 @@
 export class UserInfo {
     constructor({ userNameElement, userJobElement }) {
-        this._name = null;
+        this._title = null;
         this._job = null;
         this._nameElement = userNameElement;
         this._jobElement = userJobElement;
@@ -8,13 +8,13 @@ export class UserInfo {
 
     getUserInfo() {
         return {
-            name: this._name,
+            title: this._name,
             job: this._job
         };
     }
 
     setUserInfo(userInfo) {
-        this._name = userInfo.name;
+        this._name = userInfo.title;
         this._job = userInfo.job;
     }
 

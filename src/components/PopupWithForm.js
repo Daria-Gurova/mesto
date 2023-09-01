@@ -3,10 +3,10 @@ export class PopupWithForm extends Popup{
     constructor(popupSelector, { selectorForm, submitHandler = null }){
         super(popupSelector);
         this._submitHandler = submitHandler;
+        this._inputList = this._popupElement.querySelectorAll('.popup__input');
         this._formElement = this._popupElement.querySelector(selectorForm);
     }
     _getInputValues(){
-        this._inputList = this._popupElement.querySelectorAll('.popup__input');
         this._formValues = {};
         [...this._inputList].forEach(input => {
             this._formValues[input.name] = input.value;
@@ -29,7 +29,7 @@ export class PopupWithForm extends Popup{
     }
 
     close(){
-        this._popupElement.classList.remove('popup_opened');
+        super.close();
         document.removeEventListener('keydown', super._handleEscClose);
         this._formElement.reset();
     }
