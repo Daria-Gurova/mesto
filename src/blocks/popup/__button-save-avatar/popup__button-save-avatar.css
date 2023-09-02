@@ -1,0 +1,31 @@
+.popup__button-save-avatar {
+    width: 100%;
+    min-height: 50px;
+    margin: 18px 0 37px;
+    padding: 0;
+    border: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    background: #000000;
+    border-radius: 2px;
+    color: #ffffff;
+    cursor: pointer;    
+}
+
+.popup__button-save-avatar:hover {
+    cursor: pointer;
+    opacity: 0.8;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media screen and (max-width: 576px) {
+    .popup__button-save{
+        min-height: 46px;
+        margin: 15px 0 25px;
+        font-size: 14px;
+        line-height: 17px;
+    }    
+}

@@ -1,5 +1,14 @@
 .element__content {
     display: flex;
+    align-items: center;
     margin: 25px 19px 31px 21px;
     justify-content: space-between;
 }
+
+/*align-items: center;
+    background-color: #fff;
+    border-radius: 0 0 10px 10px;
+    display: flex;
+    font-weight: 900;
+    justify-content: space-between;
+    padding: 25px 20px 27px 21px;*/

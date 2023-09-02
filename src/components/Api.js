@@ -4,15 +4,19 @@ export class Api {
         this._headers = config.headers;
     }
 
-    #onResponse(res){
+    _onResponse(res){
         return res.ok ? res.json(): res.json().then(errData => Promise.reject(errData));
     }
     
+    getAll(){
+        return Promise.all([this.getUser(), this.getAllCards()])
+    }
+
     getUser(){
         return fetch (`${this._url}/users/me`, {
             headers: this._headers
         })
-        .then(this.#onResponse)
+        .then(this._onResponse)
     }
 
     editUser(data){
@@ -24,7 +28,7 @@ export class Api {
                 about: `${data.job}`
             })
         })
-        .then(this.#onResponse)
+        .then(this._onResponse)
     }
 
     editUserPic(data){
@@ -32,17 +36,17 @@ export class Api {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                avatar: `${data.name}`
+                avatar: `${data.photo}`
             })
         })
-        .then(this.#onResponse)
+        .then(this._onResponse)
     }
 
     getAllCards(){
         return fetch (`${this._url}/cards`, {
             headers: this._headers
         })
-        .then(this.#onResponse)
+        .then(this._onResponse)
     }
 
     addCard(data){
@@ -54,7 +58,7 @@ export class Api {
                 link: `${data.link}`
             })
         })
-        .then(this.#onResponse)
+        .then(this._onResponse)
     }
 
     deleteCard(cardId){
@@ -62,22 +66,15 @@ export class Api {
             method: 'DELETE',
             headers: this._headers
         })
-        .then(this.#onResponse)
+        .then(this._onResponse)
     }
 
-    addLike(cardId){
-        return fetch (`${this._url}/cards/likes/${cardId}`, {
-            method: 'PUT',
-            headers: this._headers
+    chgLike(cardId, isLiked){
+        return fetch(`${this._url}/cards/${cardId}/likes`, {
+            method: isLiked ? 'DELETE' : 'PUT',
+            headers: this._headers,
         })
-        .then(this.#onResponse)
+        .then(this._onResponse)
     }
 
-    deleteLike(cardId){
-        return fetch (`${this._url}/cards/likes/${cardId}`, {
-            method: 'DELETE',
-            headers: this._headers
-        })
-        .then(this.#onResponse)
-    }
 }

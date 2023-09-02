@@ -13,7 +13,9 @@
     </header>
     <main class="content">
         <section class="profile">
-            <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="аватар">
+            <div class="profile__avatar-container">
+                <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="аватар">
+            </div>
             <div class="profile__info">
                 <h1 class="profile__title"></h1>
                 <button class="profile__edit-button" type="button" aria-label="Редактировать">
@@ -61,11 +63,15 @@
             </button>
         </div>
     </div>
-    <div class="popup popup_overlay-full-image" id="popup-open-overlay-full-image">
-        <div class="popup__overlay-full-image-container">
-            <img class="popup__full-image" src="#" alt="">
-            <h2 class="popup__full-image-title"></h2>
-            <button class="popup__button-close" id="popup-overlay-close" type="button" aria-label="Закрыть">
+    <div class="popup" id="popup-avatar">
+        <div class="popup__container">
+            <h2 class="popup__title-avatar">Обновить аватар</h2>
+            <form class="popup__form" id="form-avatar" name="form-avatar">
+                <input class="popup__input popup__link" type="url" name="photo" id="photo" placeholder="Ссылка на картинку" required>
+                <span id="photo-error" class="popup__error popup__error_visible"></span>
+                <button class="popup__button-save-avatar popup__button" id="photo-add" type="submit" aria-label="сохранить">Сохранить</button>
+            </form>
+            <button class="popup__button-close" id="photo-add-close" type="button" aria-label="закрыть">
                 <img class="popup__button-close-img" src="<%=require('./images/close.png')%>" alt="закрыть">
             </button>
         </div>
@@ -81,15 +87,11 @@
             </button>
         </div>
     </div>
-    <div class="popup" id="popup-avatar">
-        <div class="popup__container">
-            <h2 class="popup__title-avatar">Обновить аватар</h2>
-            <form class="popup__form" id="form-avatar" name="form-avatar">
-                <input class="popup__input popup__link" type="url" name="link" id="photo" placeholder="Ссылка на картинку" required>
-                <span id="photo-error" class="popup__error popup__error_visible"></span>
-                <button class="popup__button-save popup__button" id="photo-add" type="submit" aria-label="сохранить">Сохранить</button>
-            </form>
-            <button class="popup__button-close" id="photo-add-close" type="button" aria-label="закрыть">
+    <div class="popup popup_overlay-full-image" id="popup-open-overlay-full-image">
+        <div class="popup__overlay-full-image-container">
+            <img class="popup__full-image" src="#" alt="">
+            <h2 class="popup__full-image-title"></h2>
+            <button class="popup__button-close" id="popup-overlay-close" type="button" aria-label="Закрыть">
                 <img class="popup__button-close-img" src="<%=require('./images/close.png')%>" alt="закрыть">
             </button>
         </div>
