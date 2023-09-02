@@ -30,7 +30,6 @@ export class PopupWithForm extends Popup{
 
     close(){
         super.close();
-        document.removeEventListener('keydown', super._handleEscClose);
         this._formElement.reset();
     }
 }

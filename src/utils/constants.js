@@ -56,3 +56,12 @@ export const jobTitle = document.querySelector('.profile__subtitle');
 // кнопка Добавить
 
 export const buttonAdd = document.querySelector('.profile__add-button');
+
+
+export const configApi = {
+  url: "https://mesto.nomoreparties.co/v1/cohort-20",
+  headers: {
+    "content-type": "application/json",
+    "authorization": "3fc4f6b9-45df-4038-9051-0622872bffaf"
+  }
+};

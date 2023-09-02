@@ -11,16 +11,23 @@ import {
   jobInput,
   nameTitle,
   jobTitle,
-  buttonAdd
+  buttonAdd,
+  configApi
 } from "../utils/constants.js";
 import { Section } from "../components/Section.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
+import { Api } from "../components/Api.js";
 
 // подключаем валидаторы
 const formEditValidation = new FormValidator(config, formEdit);
 const formAddValidation = new FormValidator(config, formAdd);
+
+// инициализация апи
+const api = new Api(configApi);
+console.log(api);
+api.getAllCards();
 
 // класс для карточек
 const cardSection = new Section({
@@ -30,6 +37,9 @@ const cardSection = new Section({
   }}, '.elements' ); 
 
 // создание дефолтных карточек
+// api.getAllCards()
+//     .then(dataCards => cardSection.render(dataCards))
+//     .catch((err) => console.log(err));
 cardSection.render(initialCards);
 
 // класс для профиля

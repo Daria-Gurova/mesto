@@ -32,7 +32,7 @@ export class Card {
         this._elementLike.classList.toggle('element__like_active');
     }
 
-    _deleteLike() {
+    _deleteCard() {
         this._placeCard.remove();
     }
 
@@ -42,7 +42,8 @@ export class Card {
         });
 
         this._elementDelete.addEventListener('click', () => {
-            this._deleteLike();
+            
+            this._deleteCard();
         });
 
         this._elementImage.addEventListener('click', () => {
