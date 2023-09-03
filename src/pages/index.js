@@ -87,7 +87,7 @@ const popupWithFormAdd = new PopupWithForm("#popup-add", {
 
 // попап для подтверждения удаления карточки
 const popupWithFormDel = new PopupDelConfirm("#popup-confirm", {
-  selectorForm: ".popup__form",
+  selectorForm: ".popup__form"
 });
 
 // попап для редактирования профиля
@@ -155,7 +155,7 @@ function openAddForm() {
 // функция обновления аватарки
 function openAvatarForm() {
   popupWithFormAvatar.open();
-  // formAvatarValidation.disableButton();
+  formAvatarValidation.disableButton();
 }
 
 // функция, которая устанавливает значения инпутов из профиля
